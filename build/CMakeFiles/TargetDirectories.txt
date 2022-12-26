@@ -1,3 +1,0 @@
-F:/C++/Kurs/OTUS/Professional/DZ_2/OTUS_Prof_DZ_02/build/CMakeFiles/LexSort.dir
-F:/C++/Kurs/OTUS/Professional/DZ_2/OTUS_Prof_DZ_02/build/CMakeFiles/ALL_BUILD.dir
-F:/C++/Kurs/OTUS/Professional/DZ_2/OTUS_Prof_DZ_02/build/CMakeFiles/ZERO_CHECK.dir
