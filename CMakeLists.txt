@@ -4,7 +4,7 @@ project (lexicographically_sort)
 
 add_executable (
     LexSort
-    src/main.cpp
+    main.cpp
     )
 
 #target_include_directories(
