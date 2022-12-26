@@ -9,13 +9,14 @@ int main(int argc, char const* argv[]) {
 		std::cout << "The \"file name\" parameter is not entered" << std::endl;
 		return 1;
 	}
+	std::ifstream out(argv[1]);
+	if (!out) {
+		std::cout << "File is not open!" << std::endl;
+		return 1;
+	}
 	try {
 		std::vector<std::vector<std::string>> ip_pool;
-		std::ifstream out(argv[1]);
-		if (!out) {
-			std::cout << "File is not open!" << std::endl;
-			return 1;
-		}
+		
 		FilePars Parser(out);
 		Parser.pars(ip_pool);
 		for (auto it : ip_pool) {

@@ -4,17 +4,18 @@ project (lexicographically_sort)
 
 add_executable (
     LexSort
-    src/main.cpp
+    main.cpp
+    src/FilePars.cpp
     )
 
-#target_include_directories(
-#    LexSort PRIVATE 
-#    ${CMAKE_CURRENT_BINARY_DIR}/src
-#    )
+target_include_directories(
+    LexSort PRIVATE 
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
 target_include_directories(
     LexSort PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/header
-    )
+)
 
 set_target_properties(LexSort PROPERTIES
 	CXX_STANDARD 11
