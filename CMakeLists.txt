@@ -5,7 +5,6 @@ project (lexicographically_sort)
 add_executable (
     LexSort
     main.cpp
-    #${CMAKE_CURRENT_SOURCE_DIR}/src
     src/FilePars.cpp
     )
 
