@@ -10,6 +10,7 @@ private:
 public:
 	explicit LexSort(std::vector<std::vector<std::string>> in) :vec(in) {};
 	~LexSort() {};
+
 	std::vector<std::vector<std::string>> sort() {
 
 		std::stable_sort(vec.begin(), vec.end(),
