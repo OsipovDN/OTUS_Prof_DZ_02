@@ -16,7 +16,7 @@ std::vector<std::string> FilePars::split(const std::string& str, char d)
     return r;
 };
 void FilePars::pars(std::vector<std::vector<std::string>>& ip) {
-    for (std::string line; std::getline(in_, line);)
+    for (std::string line; std::getline(*in_, line);)
     {
         //line ="113.162.145.156\t111\t0"
         std::vector<std::string> v = split(line, '\t');
