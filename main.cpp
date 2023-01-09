@@ -4,6 +4,7 @@
 #include <fstream>
 #include "FilePars.h"
 #include "LexSort.h"
+#include <exception>
 
 int main(int argc, char const* argv[]) {
 	if (argc != 2) {
@@ -13,7 +14,14 @@ int main(int argc, char const* argv[]) {
 	//FilePars Parser(argv[1]);
 
 	std::vector<std::vector<std::string>> ip_pool;
-	ip_pool = FilePars(argv[1]).get();
+	try {
+		ip_pool = FilePars(argv[1]).get();
+	}
+	catch (const std::exception& e) {
+		std::cout << "File is not open!" << std::endl;
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
 	
 	LexSort Lex(ip_pool);
 	ip_pool=Lex.sort();

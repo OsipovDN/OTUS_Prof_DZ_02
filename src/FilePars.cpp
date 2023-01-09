@@ -1,14 +1,13 @@
 #include "FilePars.h"
 
+
 FilePars::FilePars(const char* in) {
-    try {
-        in_ = std::unique_ptr<std::ifstream>(new std::ifstream(in));
-        pars();
+    
+    in_ = std::unique_ptr<std::ifstream>(new std::ifstream(in));
+    if (!in_->is_open()) {
+        throw std::exception("file not found!");
     }
-    catch (const std::ifstream::failure& e) {
-        std::cout << "File is not open!" << std::endl;
-        std::cerr << e.what() << std::endl;
-    }
+    pars();  
 }
 
 std::vector<std::string> FilePars::split(const std::string& str, char d)
