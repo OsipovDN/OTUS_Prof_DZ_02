@@ -19,9 +19,7 @@ public:
 	FilePars(FilePars&) = delete;
 	FilePars operator =(FilePars&) = delete;
 	FilePars(FilePars&&) = default;
-	FilePars operator =(FilePars&& rvl) {
-		ip_tabl = std::move(rvl.ip_tabl);
-	}
+	FilePars& operator =(FilePars&&) = default;
 
 	decltype(auto) get() {
 		return std::move(ip_tabl);
