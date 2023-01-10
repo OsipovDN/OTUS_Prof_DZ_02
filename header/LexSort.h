@@ -8,11 +8,11 @@ class LexSort {
 private:
 	std::vector<std::vector<std::string>> vec;
 public:
-	explicit LexSort(std::vector<std::vector<std::string>> in) :vec(in) {};
+	explicit LexSort(std::vector<std::vector<std::string>> in) :vec(std::move(in)) {};
 	~LexSort() {};
 
 	std::vector<std::vector<std::string>> sort() {
-		vec;
+
 		std::stable_sort(vec.begin(), vec.end(),
 			[](std::vector<std::string> rvl, std::vector<std::string>lvl) {
 				if (std::stoi(rvl[0]) == std::stoi(lvl[0])) {
