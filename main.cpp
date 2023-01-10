@@ -11,9 +11,9 @@ int main(int argc, char const* argv[]) {
 		std::cout << "The \"file name\" parameter is not entered" << std::endl;
 		return 1;
 	}
-	//FilePars Parser(argv[1]);
 
 	std::vector<std::vector<std::string>> ip_pool;
+
 	try {
 		ip_pool = FilePars(argv[1]).get();
 	}
@@ -32,6 +32,5 @@ int main(int argc, char const* argv[]) {
 		std::cout << std::endl;
 	}
 	
-
 	return 0;
 }
