@@ -26,7 +26,6 @@ public:
 	}
 	~FilePars() {
 		in_->close();
-		std::cout << "file close!" << std::endl;
 	}
 	/*explicit FilePars(std::ifstream* in) :in_(in) {}
 	~FilePars() {}*/
