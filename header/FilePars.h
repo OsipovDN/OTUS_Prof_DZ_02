@@ -24,7 +24,10 @@ public:
 	decltype(auto) get() {
 		return std::move(ip_tabl);
 	}
-	~FilePars() = default;
+	~FilePars() {
+		in_->close();
+		std::cout << "file close!" << std::endl;
+	}
 	/*explicit FilePars(std::ifstream* in) :in_(in) {}
 	~FilePars() {}*/
 	
