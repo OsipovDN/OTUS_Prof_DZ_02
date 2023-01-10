@@ -6,8 +6,7 @@
 
 class FilePars {
 private:
-	std::unique_ptr <std::ifstream> in_;
-	//std::ifstream& in_;
+	std::ifstream in_;
 	std::vector<std::vector<std::string>> ip_tabl;
 
 	std::vector<std::string> split(const std::string& str, char d);
@@ -25,7 +24,7 @@ public:
 		return std::move(ip_tabl);
 	}
 	~FilePars() {
-		in_->close();
+		in_.close();
 	}
 	/*explicit FilePars(std::ifstream* in) :in_(in) {}
 	~FilePars() {}*/

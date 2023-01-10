@@ -2,9 +2,8 @@
 
 
 FilePars::FilePars(const char* in) {
-    in_ = std::unique_ptr<std::ifstream>(new std::ifstream(in));
-
-    if (!in_->is_open()) {
+    in_ = std::move(std::ifstream(in));
+    if (!in_.is_open()) {
         throw std::runtime_error("file not found!");
     }
     pars();  
@@ -26,7 +25,7 @@ std::vector<std::string> FilePars::split(const std::string& str, char d)
     return r;
 };
     void FilePars::pars() {
-    for (std::string line; std::getline(*in_, line);){
+    for (std::string line; std::getline(in_, line);){
         //line ="113.162.145.156\t111\t0"
         std::vector<std::string> v = split(line, '\t');
         //v={"113.162.145.156","111","0"}
