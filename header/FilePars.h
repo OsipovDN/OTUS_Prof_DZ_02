@@ -21,7 +21,7 @@ public:
 	FilePars(FilePars&&) = default;
 	FilePars& operator =(FilePars&&) = default;
 
-	decltype(auto) get() {
+	decltype(auto) get()noexcept {
 		return std::move(ip_tabl);
 	}
 	~FilePars() {

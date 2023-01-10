@@ -5,7 +5,7 @@ FilePars::FilePars(const char* in) {
     in_ = std::unique_ptr<std::ifstream>(new std::ifstream(in));
 
     if (!in_->is_open()) {
-        throw std::exception("file not found!");
+        throw std::runtime_error("file not found!");
     }
     pars();  
 }

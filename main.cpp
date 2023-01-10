@@ -4,7 +4,7 @@
 #include <fstream>
 #include "FilePars.h"
 #include "LexSort.h"
-#include <exception>
+#include <stdexcept>
 
 int main(int argc, char const* argv[]) {
 	if (argc != 2) {
