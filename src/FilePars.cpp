@@ -1,13 +1,11 @@
 #include "FilePars.h"
 
-
-
 FilePars::FilePars(const char* in) :in_(std::make_unique<std::ifstream>(in)) {
 	if (!in_->is_open()) {
 		throw std::runtime_error("file not found!");
 	}
 	pars();
-	transformTab();
+	
 }
 
 std::vector<std::string> FilePars::split(const std::string& str, char d)
@@ -35,13 +33,3 @@ void FilePars::pars() {
 	};
 }
 
-void FilePars::transformTab() {
-	for (const auto& it_tab : ip_tabl) {
-		std::vector<int> temp;
-		std::for_each(it_tab.cbegin(), it_tab.cend(), [&](
-			const std::string& str) {
-				temp.push_back(std::stoi(str));
-			});
-		ip_tab_transform.push_back(temp);
-	}
-}
