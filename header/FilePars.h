@@ -3,15 +3,18 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <memory>
+#include <algorithm>
 
 class FilePars {
 private:
-	std::ifstream in_;
+	std::unique_ptr<std::ifstream >in_;
 	std::vector<std::vector<std::string>> ip_tabl;
+	std::vector<std::vector<int>> ip_tab_transform;
 
 	std::vector<std::string> split(const std::string& str, char d);
 	void pars();
-	//void pars(std::vector<std::vector<std::string>>& ip);
+	void transformTab();
 
 public:
 	explicit FilePars(const char* in);
@@ -20,14 +23,10 @@ public:
 	FilePars(FilePars&&) = default;
 	FilePars& operator =(FilePars&&) = default;
 
-	decltype(auto) get()noexcept {
-		return std::move(ip_tabl);
-	}
-	~FilePars() {
-		in_.close();
-	}
-	/*explicit FilePars(std::ifstream* in) :in_(in) {}
-	~FilePars() {}*/
 	
+	decltype(auto) getTab()const noexcept { return ip_tabl; }
+	decltype(auto) getTabTransform()const noexcept { return ip_tab_transform; }
+	~FilePars() { in_->close(); }
+
 };
 

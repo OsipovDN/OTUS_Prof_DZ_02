@@ -12,10 +12,11 @@ int main(int argc, char const* argv[]) {
 		return 1;
 	}
 
-	std::vector<std::vector<std::string>> ip_pool;
+	std::vector<std::vector<int>> ip_pool;
 
 	try {
-		ip_pool = FilePars(argv[1]).get();
+		FilePars obj(argv[1]);
+		ip_pool = obj.getTabTransform();
 	}
 	catch (const std::exception& e) {
 		std::cout << "File is not open!" << std::endl;
@@ -23,8 +24,7 @@ int main(int argc, char const* argv[]) {
 		return 1;
 	}
 	
-	LexSort Lex(ip_pool);
-	ip_pool=Lex.sort();
+	ip_pool = LexSort().sort(std::move(ip_pool));
 	for (auto it : ip_pool) {
 		for (auto it1 : it) {
 			std::cout << it1 << " ";
