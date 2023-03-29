@@ -3,10 +3,11 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <memory>
 
 class FilePars {
 private:
-	std::ifstream in_;
+	std::unique_ptr<std::ifstream >in_;
 	std::vector<std::vector<std::string>> ip_tabl;
 
 	std::vector<std::string> split(const std::string& str, char d);
@@ -20,14 +21,8 @@ public:
 	FilePars(FilePars&&) = default;
 	FilePars& operator =(FilePars&&) = default;
 
-	decltype(auto) get()noexcept {
-		return std::move(ip_tabl);
-	}
-	~FilePars() {
-		in_.close();
-	}
-	/*explicit FilePars(std::ifstream* in) :in_(in) {}
-	~FilePars() {}*/
+	decltype(auto) get()noexcept {return std::move(ip_tabl);}
+	~FilePars() {in_->close();}
 	
 };
 
