@@ -39,6 +39,8 @@ int main(int argc, char const* argv[]) {
 		std::cout << "Reverse sorting:" << std::endl;
 		ip_pool_trans = ipInt.sortRev();
 		printTab(ip_pool_trans);
+
+		//Сортировка
 	}
 	catch (const std::exception& e) {
 		std::cout << "File is not open!" << std::endl;
