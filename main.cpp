@@ -39,8 +39,16 @@ int main(int argc, char const* argv[]) {
 
 	try {
 		FilePars pars_vec(argv[1]);
-		ip_pool_pars = pars_vec.getTab();
-		transformTab(ip_pool_pars, ip_pool_trans);
+		ip_pool_pars = pars_vec.getTab();	
+
+	}
+	catch (const std::exception& e) {
+		std::cout << "File is not open!" << std::endl;
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
+
+	transformTab(ip_pool_pars, ip_pool_trans);
 		LexSort ipInt(std::move(ip_pool_trans));
 
 		//Сортировка от меньшего к большему
@@ -56,12 +64,6 @@ int main(int argc, char const* argv[]) {
 		printTab(ip_pool_trans);
 
 		//Сортировка
-	}
-	catch (const std::exception& e) {
-		std::cout << "File is not open!" << std::endl;
-		std::cerr << e.what() << std::endl;
-		return 1;
-	}
 
 	
 	return 0;
