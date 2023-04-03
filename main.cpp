@@ -56,6 +56,7 @@ int main(int argc, char const* argv[]) {
 		printTab(ip_pool_trans);
 
 		//Сортировка
+
 	}
 	catch (const std::exception& e) {
 		std::cout << "File is not open!" << std::endl;
