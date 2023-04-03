@@ -15,6 +15,17 @@ void printTab(const X& tab) {
 	}
 };
 
+void transformTab(std::vector<std::vector<std::string>>& ip_tab_str, std::vector<std::vector<int>>& ip_tab_int) {
+	for (auto it_tab = ip_tab_str.cbegin(); it_tab != ip_tab_str.cend(); ++it_tab) {
+		std::vector<int> temp;
+		std::for_each(it_tab->cbegin(), it_tab->cend(), [&](
+			const std::string& str) {
+				temp.push_back(std::stoi(str));
+			});
+		ip_tab_int.push_back(temp);
+	}
+};
+
 
 int main(int argc, char const* argv[]) {
 	if (argc != 2) {
@@ -27,17 +38,19 @@ int main(int argc, char const* argv[]) {
 	try {
 		FilePars pars_vec(argv[1]);
 		ip_pool_pars = pars_vec.getTab();
-		LexSort ipInt(std::move(ip_pool_pars));
-		ipInt.transformTab();
+		transformTab(ip_pool_pars, ip_pool_trans);
+		LexSort ipInt(std::move(ip_pool_trans));
 
 		//Сортировка от меньшего к большему
 		std::cout << "Direct sorting:" << std::endl;
-		ip_pool_trans = ipInt.sortForw();
+		ipInt.sortForw();
+		ip_pool_trans = ipInt.getTab();
 		printTab(ip_pool_trans);
 
 		//Сортировка всего файла от большего к меньшему
 		std::cout << "Reverse sorting:" << std::endl;
-		ip_pool_trans = ipInt.sortRev();
+		ipInt.sortRev();
+		ip_pool_trans = ipInt.getTab();
 		printTab(ip_pool_trans);
 
 		//Сортировка

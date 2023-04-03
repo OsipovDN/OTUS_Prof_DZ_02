@@ -6,12 +6,11 @@
 
 class LexSort {
 private:
-	std::unique_ptr<std::vector<std::vector<std::string>>> ip_tab;
-	std::vector<std::vector<int>> ip_tab_trans;
+	std::unique_ptr<std::vector<std::vector<int>>> ip_tab_trans;
 
 public:
-	LexSort(std::vector<std::vector<std::string>> obj):
-		ip_tab(std::make_unique<std::vector<std::vector<std::string>>>(obj)){};
+	LexSort(std::vector<std::vector<int>> obj):
+		ip_tab_trans(std::make_unique<std::vector<std::vector<int>>>(obj)){};
 
 	LexSort(LexSort&) = delete;
 	LexSort operator =(LexSort&) = delete;
@@ -20,32 +19,24 @@ public:
 
 	~LexSort() {};
 
-	std::vector<std::vector<int>>& sortForw() {
-		std::stable_sort(ip_tab_trans.begin(), ip_tab_trans.end(),
+	void sortForw() {
+		std::stable_sort(ip_tab_trans->begin(), ip_tab_trans->end(),
 			[](std::vector<int> rvl, std::vector<int>lvl) {
 				return  rvl < lvl;
 			});
-		return this->ip_tab_trans;
 	}
 
-	std::vector<std::vector<int>>& sortRev() {
-		std::stable_sort(ip_tab_trans.begin(), ip_tab_trans.end(),
+	void sortRev() {
+		std::stable_sort(ip_tab_trans->begin(), ip_tab_trans->end(),
 			[](std::vector<int> rvl, std::vector<int>lvl) {
 				return  rvl > lvl;
 			});
-		return this->ip_tab_trans;
 	}
-
-	void transformTab() {
-		for (auto it_tab = ip_tab->cbegin(); it_tab != ip_tab->cend(); ++it_tab) {
-			std::vector<int> temp;
-			std::for_each(it_tab->cbegin(), it_tab->cend(), [&](
-				const std::string& str) {
-					temp.push_back(std::stoi(str));
-				});
-			ip_tab_trans.push_back(temp);
-		}
+	std::vector<std::vector<int>>& getTab() {
+		return *this->ip_tab_trans;
 	};
+
+	
 
 
 
