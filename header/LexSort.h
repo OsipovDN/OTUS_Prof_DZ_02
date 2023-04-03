@@ -24,14 +24,18 @@ public:
 			[](std::vector<int> rvl, std::vector<int>lvl) {
 				return  rvl < lvl;
 			});
-	}
+	};
 
 	void sortRev() {
 		std::stable_sort(ip_tab_trans->begin(), ip_tab_trans->end(),
 			[](std::vector<int> rvl, std::vector<int>lvl) {
 				return  rvl > lvl;
 			});
-	}
+	};
+
+	void sortOf() {
+	
+	};
 	std::vector<std::vector<int>>& getTab() {
 		return *this->ip_tab_trans;
 	};
