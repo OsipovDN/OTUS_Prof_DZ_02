@@ -8,8 +8,9 @@
 
 class FilePars {
 private:
+	using TabStr = std::vector < std::vector < std::string >>;
 	std::unique_ptr<std::ifstream >in_;
-	std::vector<std::vector<std::string>> ip_tabl;
+	TabStr ip_tabl;
 
 	std::vector<std::string> split(const std::string& str, char d);
 	void pars();
