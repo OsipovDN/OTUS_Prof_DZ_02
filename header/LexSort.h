@@ -1,31 +1,30 @@
 #pragma once
-#include <string>
+#include <memory>
 #include <vector>
-#include <algorithm>
-#include <iostream>
+
+using TabInt = std::vector < std::vector < int >>;
+using Byte = std::pair<int, int>;
 
 class LexSort {
 private:
-	std::vector<std::vector<std::string>> vec;
+	std::unique_ptr<TabInt> ip_tab_trans;
+	
 public:
-	explicit LexSort(std::vector<std::vector<std::string>> in) :vec(in) {};
+	
+	LexSort(TabInt obj) :
+		ip_tab_trans(std::make_unique<TabInt>(obj)) {};
+
+	LexSort(LexSort&) = delete;
+	LexSort operator =(LexSort&) = delete;
+	LexSort(LexSort&&) = default;
+	LexSort& operator =(LexSort&&) = default;
+
 	~LexSort() {};
 
-	std::vector<std::vector<std::string>> sort() {
+	void sortForw();
+	void sortRev();
+	TabInt sortOf(Byte& b1, Byte& b2);
+	TabInt sortOf(Byte& b);
+	std::vector<std::vector<int>>& getTab();
 
-		std::stable_sort(vec.begin(), vec.end(),
-			[](std::vector<std::string> rvl, std::vector<std::string>lvl) {
-				if (std::stoi(rvl[0]) == std::stoi(lvl[0])) {
-					if (std::stoi(rvl[1]) == std::stoi(lvl[1])) {
-						if (std::stoi(rvl[2]) == std::stoi(lvl[2])) {
-							return std::stoi(rvl[3]) > std::stoi(lvl[3]);
-						}
-						return std::stoi(rvl[2]) > std::stoi(lvl[2]);
-					}
-					return std::stoi(rvl[1]) > std::stoi(lvl[1]);
-				}
-				return std::stoi(rvl[0]) > std::stoi(lvl[0]);
-			});
-			return vec;
-	}
 };

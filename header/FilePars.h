@@ -1,18 +1,29 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <string>
-#include <fstream>
+
+using TabStr = std::vector < std::vector < std::string >>;
 
 class FilePars {
 private:
-	std::ifstream& in_;
-	//std::vector<std::vector<std::string>> ip_tabl;
+	std::unique_ptr<std::ifstream >in_;
+	TabStr ip_tabl;
 
+	std::vector<std::string> split(const std::string& str, char d);
+	void pars();
+	
 public:
-	explicit FilePars(std::ifstream& in) :in_(in) {}
-	~FilePars() {}
-    std::vector<std::string> split(const std::string& str, char d);
-    void pars(std::vector<std::vector<std::string>>& ip);
+	explicit FilePars(const char* in);
+	FilePars(FilePars&) = delete;
+	FilePars operator =(FilePars&) = delete;
+	FilePars(FilePars&&) = default;
+	FilePars& operator =(FilePars&&) = default;
+
+	auto& getTab()const noexcept { return this->ip_tabl; }
+	
+	~FilePars() { in_->close(); }
+
 };
 

@@ -6,7 +6,7 @@ add_executable (
     LexSort
     main.cpp
     src/FilePars.cpp
-    )
+    src/LexSort.cpp)
 
 target_include_directories(
     LexSort PRIVATE 
@@ -18,7 +18,7 @@ target_include_directories(
 )
 
 set_target_properties(LexSort PROPERTIES
-	CXX_STANDARD 11
+	CXX_STANDARD 17
 	CXX_STANDARD_REQUIRED ON
 )
 
