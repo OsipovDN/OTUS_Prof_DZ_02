@@ -6,7 +6,7 @@ add_executable (
     LexSort
     main.cpp
     src/FilePars.cpp
-    )
+    src/LexSort.cpp)
 
 target_include_directories(
     LexSort PRIVATE 

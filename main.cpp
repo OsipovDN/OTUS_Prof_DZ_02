@@ -1,12 +1,13 @@
 #include <iostream>
-#include <vector>
 #include <fstream>
 #include "FilePars.h"
 #include "LexSort.h"
 #include <stdexcept>
+#include <algorithm>
 
-using TabStr=std::vector < std::vector < std::string >> ;
+using TabStr = std::vector < std::vector < std::string >>;
 using TabInt = std::vector < std::vector < int >>;
+using Byte = std::pair<int, int>;
 
 template <typename X>
 void printTab(const X& tab) {
@@ -19,7 +20,7 @@ void printTab(const X& tab) {
 };
 
 void transformTab(TabStr& ip_tab_str, TabInt& ip_tab_int) {
-	for (const auto& it_tab:ip_tab_str) {
+	for (const auto& it_tab : ip_tab_str) {
 		std::vector<int> temp;
 		std::for_each(it_tab.cbegin(), it_tab.cend(), [&](
 			const std::string& str) {
@@ -39,7 +40,7 @@ int main(int argc, char const* argv[]) {
 
 	try {
 		FilePars pars_vec(argv[1]);
-		ip_pool_pars = pars_vec.getTab();	
+		ip_pool_pars = pars_vec.getTab();
 
 	}
 	catch (const std::exception& e) {
@@ -63,20 +64,25 @@ int main(int argc, char const* argv[]) {
 	ip_pool_trans = ipInt.getTab();
 	printTab(ip_pool_trans);
 
-	//Сортировка по первому и второму байтам
-	std::pair<int, int> first_byte = { 1,46 };
-	std::pair<int, int> second_byte = { 2,70 };
-	ip_pool_trans=ipInt.sortOf(first_byte, second_byte);
+	//Сортировка по первому байту
+	Byte f_byte = { 1,1 };
+	ip_pool_trans = ipInt.sortOf(f_byte);
 	printTab(ip_pool_trans);
 
 	//Сортировка по первому и второму байтам
-	std::pair<int, int> any_byte = { 0,46 };
+	Byte first_byte = { 1,46 };
+	Byte second_byte = { 2,70 };
+	ip_pool_trans = ipInt.sortOf(first_byte, second_byte);
+	printTab(ip_pool_trans);
+
+	//Сортировка по первому и второму байтам
+	Byte any_byte = { 0,46 };
 	ip_pool_trans = ipInt.sortOf(any_byte);
 	printTab(ip_pool_trans);
 
 
-		
 
-	
+
+
 	return 0;
 }
