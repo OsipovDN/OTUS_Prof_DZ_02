@@ -27,7 +27,7 @@ TabInt LexSort::sortOf(Byte& b1, Byte& b2) {
 	std::for_each(start_it, start_it + end, [&](const std::vector<int>& obj) {
 		return res_vec.push_back(obj);
 		});
-	return std::move(res_vec);
+	return res_vec;
 };
 
 TabInt LexSort::sortOf(Byte& b) {
@@ -44,7 +44,7 @@ TabInt LexSort::sortOf(Byte& b) {
 				res_vec.push_back(ip);
 			}
 			});
-		return std::move(res_vec);
+		return res_vec;
 	}
 	else {
 		auto start_it = std::find_if(ip_tab_trans->cbegin(), ip_tab_trans->cend(), [&](std::vector <int> ip) {
@@ -56,7 +56,7 @@ TabInt LexSort::sortOf(Byte& b) {
 		std::for_each(start_it, start_it + end, [&](const std::vector<int>& ip) {
 			return res_vec.push_back(ip);
 			});
-		return std::move(res_vec);
+		return res_vec;
 	}
 
 };
