@@ -49,21 +49,28 @@ int main(int argc, char const* argv[]) {
 	}
 
 	transformTab(ip_pool_pars, ip_pool_trans);
-		LexSort ipInt(std::move(ip_pool_trans));
+	LexSort ipInt(std::move(ip_pool_trans));
 
-		//Сортировка от меньшего к большему
-		std::cout << "Direct sorting:" << std::endl;
-		ipInt.sortForw();
-		ip_pool_trans = ipInt.getTab();
-		printTab(ip_pool_trans);
+	////Сортировка от меньшего к большему
+	//std::cout << "Direct sorting:" << std::endl;
+	//ipInt.sortForw();
+	//ip_pool_trans = ipInt.getTab();
+	//printTab(ip_pool_trans);
 
-		//Сортировка всего файла от большего к меньшему
-		std::cout << "Reverse sorting:" << std::endl;
-		ipInt.sortRev();
-		ip_pool_trans = ipInt.getTab();
-		printTab(ip_pool_trans);
+	////Сортировка всего файла от большего к меньшему
+	//std::cout << "Reverse sorting:" << std::endl;
+	//ipInt.sortRev();
+	//ip_pool_trans = ipInt.getTab();
+	//printTab(ip_pool_trans);
 
-		//Сортировка
+	//Сортировка по первому и второму байтам
+	std::pair<int, int> first_byte = { 1,46 };
+	std::pair<int, int> second_byte = { 2,70 };
+	ip_pool_trans=ipInt.sortOf(first_byte, second_byte);
+	printTab(ip_pool_trans);
+
+
+		
 
 	
 	return 0;
