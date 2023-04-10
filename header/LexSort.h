@@ -9,6 +9,7 @@ class LexSort {
 private:
 	using TabInt = std::vector < std::vector < int >>;
 	std::unique_ptr<TabInt> ip_tab_trans;
+	using Byte = std::pair<int, int>;
 public:
 	LexSort(TabInt obj) :
 		ip_tab_trans(std::make_unique<TabInt>(obj)) {};
@@ -28,7 +29,7 @@ public:
 		std::sort(ip_tab_trans->rbegin(), ip_tab_trans->rend());
 	};
 
-	TabInt sortOf(std::pair <int, int>& b1, std::pair <int, int>& b2) {
+	TabInt sortOf(Byte& b1, Byte& b2) {
 		bool flag_sort;
 		TabInt res_vec;
 		flag_sort = std::is_sorted(std::execution::par, ip_tab_trans->cbegin(), ip_tab_trans->cend());
@@ -44,10 +45,9 @@ public:
 			return res_vec.push_back(obj);
 			});
 		return std::move(res_vec);
-
 	};
 
-	TabInt sortOf(std::pair <int, int>& b) {
+	TabInt sortOf(Byte& b) {
 		bool flag_sort;
 		TabInt res_vec;
 		flag_sort = std::is_sorted(std::execution::par, ip_tab_trans->cbegin(), ip_tab_trans->cend());
