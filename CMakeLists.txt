@@ -41,7 +41,7 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 
 endif()
 
-install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
+install(TARGETS LexSort RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
