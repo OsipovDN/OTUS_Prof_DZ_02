@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <memory>
 
 using TabStr = std::vector < std::vector < std::string >>;
 
