@@ -1,9 +1,13 @@
 #include <iostream>
 #include <fstream>
+#include "version.h"
 #include "FilePars.h"
 #include "LexSort.h"
 #include <stdexcept>
 #include <algorithm>
+
+
+#define VERS PROJECT_VERSION_PATCH
 
 using TabStr = std::vector < std::vector < std::string >>;
 using TabInt = std::vector < std::vector < int >>;
