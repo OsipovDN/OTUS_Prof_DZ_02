@@ -13,9 +13,8 @@ using Byte = std::pair<int, int>;
 template <typename X>
 void printTab(const X& tab) {
 	for (auto it : tab) {
-		for (auto it1 : it) {
+		for (auto it1 : it) 
 			std::cout << it1 << " ";
-		}
 		std::cout << std::endl;
 	}
 };
