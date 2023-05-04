@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <algorithm>
 
+
 using TabStr = std::vector < std::vector < std::string >>;
 using TabInt = std::vector < std::vector < int >>;
 using Byte = std::pair<int, int>;
