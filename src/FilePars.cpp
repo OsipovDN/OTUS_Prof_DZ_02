@@ -1,5 +1,5 @@
 #include "FilePars.h"
-#include <memory>
+
 #include <algorithm>
 
 FilePars::FilePars(const char* in) :in_(std::make_unique<std::ifstream>(in)) {
