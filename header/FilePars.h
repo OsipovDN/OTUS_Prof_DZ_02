@@ -25,6 +25,5 @@ public:
 	auto& getTab()const noexcept { return this->ip_tabl; }
 
 	~FilePars() { in_->close(); }
-
 };
 
