@@ -7,7 +7,6 @@
 #include <algorithm>
 
 
-#define VERS PROJECT_VERSION_PATCH
 
 using TabStr = std::vector < std::vector < std::string >>;
 using TabInt = std::vector < std::vector < int >>;
@@ -56,37 +55,31 @@ int main(int argc, char const* argv[]) {
 	transformTab(ip_pool_pars, ip_pool_trans);
 	LexSort ipInt(std::move(ip_pool_trans));
 
-	//Сортировка от меньшего к большему
-	//std::cout << "Direct sorting:" << std::endl;
+	//Direct sorting:
 	ipInt.sortForw();
 	ip_pool_trans = ipInt.getTab();
 	printTab(ip_pool_trans);
 
-	//Сортировка всего файла от большего к меньшему
-	//std::cout << "Reverse sorting:" << std::endl;
+	//Reverse sorting:
 	ipInt.sortRev();
 	ip_pool_trans = ipInt.getTab();
 	printTab(ip_pool_trans);
 
-	//Сортировка по первому байту
+	//Sorting by first byte
 	Byte f_byte = { 1,1 };
 	ip_pool_trans = ipInt.sortOf(f_byte);
 	printTab(ip_pool_trans);
 
-	//Сортировка по первому и второму байтам
+	//Sorting by first and second byte
 	Byte first_byte = { 1,46 };
 	Byte second_byte = { 2,70 };
 	ip_pool_trans = ipInt.sortOf(first_byte, second_byte);
 	printTab(ip_pool_trans);
 
-	//Сортировка по первому и второму байтам
+	//Sorting by any byte
 	Byte any_byte = { 0,46 };
 	ip_pool_trans = ipInt.sortOf(any_byte);
 	printTab(ip_pool_trans);
-
-
-
-
 
 	return 0;
 }
