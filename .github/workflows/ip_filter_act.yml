@@ -3,7 +3,7 @@ name: 'ip_filter_act'
 on:
   push:
     branches:
-      - maste
+      - master
       - feature/github_actions
 
 jobs:
