@@ -1,12 +1,19 @@
 cmake_minimum_required (VERSION 3.8)
 
-project (lexicographically_sort)
+set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
+set(PROJECT_VESRION 0.0.${PATCH_VERSION})
+
+project (lexicographically_sort VERSION ${PROJECT_VESRION})
+find_package(GTest)
+configure_file(version.h.in version.h)
 
 add_executable (
     LexSort
     main.cpp
     src/FilePars.cpp
-    src/LexSort.cpp)
+    src/LexSort.cpp
+)
+add_executable(lex_sort_gtest test/lex_sort_gtest.cpp)
 
 target_include_directories(
     LexSort PRIVATE 
@@ -17,6 +24,24 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/header
 )
 
+target_include_directories(
+    lex_sort_gtest PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/test
+)
+target_include_directories(
+    lex_sort_gtest PRIVATE
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+target_include_directories(
+    lex_sort_gtest PRIVATE
+    ${GTEST_INCLUDE_DIRS}
+)
+
+target_link_libraries(
+    lex_sort_gtest PRIVATE
+    ${GTEST_BOTH_LIBRARIES}
+)
 set_target_properties(LexSort PROPERTIES
 	CXX_STANDARD 17
 	CXX_STANDARD_REQUIRED ON
@@ -55,4 +80,5 @@ include(CPack)
 
 enable_testing()
 
-add_test(test_version test_version)
+
+add_test(lex_sort_gtest lex_sort_gtest)
