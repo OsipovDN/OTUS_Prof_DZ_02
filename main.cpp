@@ -14,9 +14,14 @@ using Byte = std::pair<int, int>;
 
 template <typename X>
 void printTab(const X& tab) {
+	static int i = 0;
 	for (auto it : tab) {
+		i = 0;
 		for (auto it1 : it) {
-			std::cout << it1 << " ";
+			std::cout << it1;
+			i++;
+			if (i!=4)
+				std::cout << ".";
 		}
 		std::cout << std::endl;
 	}
