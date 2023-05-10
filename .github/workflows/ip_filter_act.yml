@@ -37,4 +37,6 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./lexicographically_sort-0.0.${{ github.run_number }}-Linux.deb
           asset_name: lexicographically_sort-0.0.${{ github.run_number }}-Linux.deb
+          
           asset_content_type: application/vnd.debian.binary-package
+

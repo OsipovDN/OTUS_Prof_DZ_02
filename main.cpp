@@ -7,28 +7,21 @@
 #include <algorithm>
 
 
-using TabStr = std::vector < std::vector < std::string >>;
 using TabInt = std::vector < std::vector < int >>;
 using Byte = std::pair<int, int>;
 
 template <typename X>
 void printTab(const X& tab) {
+	static int i = 0;
 	for (auto it : tab) {
-		for (auto it1 : it) 
-			std::cout << it1 << " ";
+		i = 0;
+		for (auto it1 : it) {
+			std::cout << it1;
+			i++;
+			if (i!=4)
+				std::cout << ".";
+		}
 		std::cout << std::endl;
-	}
-};
-
-
-void transformTab(TabStr& ip_tab_str, TabInt& ip_tab_int) {
-	for (const auto& it_tab : ip_tab_str) {
-		std::vector<int> temp;
-		std::for_each(it_tab.cbegin(), it_tab.cend(), [&](
-			const std::string& str) {
-				temp.push_back(std::stoi(str));
-			});
-		ip_tab_int.push_back(temp);
 	}
 };
 
@@ -37,12 +30,11 @@ int main(int argc, char const* argv[]) {
 		std::cout << "The \"file name\" parameter is not entered" << std::endl;
 		return 1;
 	}
-	TabStr ip_pool_pars;
 	TabInt ip_pool_trans;
 
 	try {
 		FilePars pars_vec(argv[1]);
-		ip_pool_pars = pars_vec.getTab();
+		ip_pool_trans = pars_vec.getTab();
 
 	}
 	catch (const std::exception& e) {
@@ -51,7 +43,7 @@ int main(int argc, char const* argv[]) {
 		return 1;
 	}
 
-	transformTab(ip_pool_pars, ip_pool_trans);
+	//transformTab(ip_pool_pars, ip_pool_trans);
 	LexSort ipInt(std::move(ip_pool_trans));
 
 	//Direct sorting:

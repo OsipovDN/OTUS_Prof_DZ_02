@@ -5,13 +5,13 @@
 #include <string>
 #include <memory>
 
-using TabStr = std::vector < std::vector < std::string >>;
+using TabInt = std::vector < std::vector < int >>;
 
 class FilePars {
 private:
 	std::unique_ptr<std::ifstream >in_;
-	TabStr ip_tabl;
-
+	TabInt ip_tabl;
+	
 	std::vector<std::string> split(const std::string& str, char d);
 	void pars();
 
