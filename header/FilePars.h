@@ -14,7 +14,7 @@ private:
 	
 	std::vector<std::string> split(const std::string& str, char d);
 	void pars();
-	
+
 public:
 	explicit FilePars(const char* in);
 	FilePars(FilePars&) = delete;
@@ -23,8 +23,7 @@ public:
 	FilePars& operator =(FilePars&&) = default;
 
 	auto& getTab()const noexcept { return this->ip_tabl; }
-	
-	~FilePars() { in_->close(); }
 
+	~FilePars() { in_->close(); }
 };
 
